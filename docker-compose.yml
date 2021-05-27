@@ -1,0 +1,15 @@
+version: '3'
+
+services: 
+
+  java-graphql-api:
+    build: './book-details'
+    ports:
+      - '5334:8080'
+
+  nginx:
+    build: './playground'
+    environment:
+      GRAPHQL_ENDPOINT: "http://localhost:5334/graphql"
+    ports:
+      - '5335:4000'
